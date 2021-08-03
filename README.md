@@ -16,7 +16,7 @@ Simple HTTP server.
 
    ```sh
    $ curl http://localhost:9000/api/health
-   ok
+   {"ok":true}
    ```
 
 ### `/mp3`
