@@ -23,10 +23,12 @@ func main() {
 	router.HandleFunc("/mp3", mp3)
 
 	srv := &http.Server{
-		Handler:      router,
-		Addr:         "127.0.0.1:9000",
+		Handler: router,
+		Addr:    "127.0.0.1:9000",
+		// Good practice to set timeouts to mitigate Slowloris attacks
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
+		IdleTimeout:  60 * time.Second,
 	}
 
 	log.Fatal(srv.ListenAndServe())
