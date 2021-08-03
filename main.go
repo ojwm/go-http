@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"encoding/json"
 	"log"
 	"net/http"
 	"time"
@@ -10,7 +10,7 @@ import (
 )
 
 func health(res http.ResponseWriter, req *http.Request) {
-	fmt.Fprintf(res, "ok\n")
+	json.NewEncoder(res).Encode(map[string]bool{"ok": true})
 }
 
 func mp3(res http.ResponseWriter, req *http.Request) {
