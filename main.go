@@ -19,7 +19,7 @@ func mp3(res http.ResponseWriter, req *http.Request) {
 
 func main() {
 	router := mux.NewRouter()
-	router.HandleFunc("/health", health)
+	router.HandleFunc("/api/health", health)
 	router.HandleFunc("/mp3", mp3)
 
 	srv := &http.Server{

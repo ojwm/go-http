@@ -10,12 +10,12 @@ Simple HTTP server.
    go run main.go
    ```
 
-### `/health`
+### `/api/health`
 
-1. Open <http://localhost:9000/health> in a browser or use `curl`:
+1. Open <http://localhost:9000/api/health> in a browser or use `curl`:
 
    ```sh
-   $ curl http://localhost:9000/health
+   $ curl http://localhost:9000/api/health
    ok
    ```
 
