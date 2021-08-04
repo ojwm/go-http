@@ -24,7 +24,13 @@ func mp3(res http.ResponseWriter, req *http.Request) {
 
 func main() {
 	var wait time.Duration
-	flag.DurationVar(&wait, "graceful-timeout", 15*time.Second, "the duration for which the server gracefully wait for existing connections to finish - e.g. 15s or 1m")
+	flag.DurationVar(
+		&wait,
+		"graceful-timeout",
+		15*time.Second,
+		"the duration for which the server gracefully wait for"+
+			"existing connections to finish - e.g. 15s or 1m",
+	)
 	flag.Parse()
 
 	cors := handlers.CORS(
