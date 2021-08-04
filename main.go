@@ -15,6 +15,8 @@ import (
 )
 
 func health(res http.ResponseWriter, req *http.Request) {
+	res.WriteHeader(http.StatusOK)
+	res.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(res).Encode(map[string]bool{"ok": true})
 }
 
@@ -41,7 +43,7 @@ func main() {
 
 	router := mux.NewRouter()
 	router.Use(cors)
-	router.HandleFunc("/api/health", health)
+	router.HandleFunc("/api/health", health).Methods(http.MethodGet)
 	router.HandleFunc("/mp3", mp3)
 
 	srv := &http.Server{
