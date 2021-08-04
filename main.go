@@ -10,6 +10,7 @@ import (
 	"os/signal"
 	"time"
 
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
 
@@ -26,7 +27,14 @@ func main() {
 	flag.DurationVar(&wait, "graceful-timeout", 15*time.Second, "the duration for which the server gracefully wait for existing connections to finish - e.g. 15s or 1m")
 	flag.Parse()
 
+	cors := handlers.CORS(
+		handlers.AllowedHeaders([]string{"Content-type"}),
+		handlers.AllowedOrigins([]string{"*"}),
+		handlers.AllowCredentials(),
+	)
+
 	router := mux.NewRouter()
+	router.Use(cors)
 	router.HandleFunc("/api/health", health)
 	router.HandleFunc("/mp3", mp3)
 
