@@ -62,7 +62,7 @@ func main() {
 		}
 	}()
 
-	c := make(chan os.Signal, 1)
+	c := make(chan os.Signal)
 
 	// Accept graceful shutdowns when quit via SIGINT (Ctrl+C),
 	// SIGKILL, SIGQUIT or SIGTERM (Ctrl+/) will not be caught.
