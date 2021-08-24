@@ -62,13 +62,14 @@ func main() {
 		}
 	}()
 
+	// Create a channel for OS signals
 	c := make(chan os.Signal)
 
-	// Accept graceful shutdowns when quit via SIGINT (Ctrl+C),
+	// Only notify the channel on SIGINT (Ctrl+C),
 	// SIGKILL, SIGQUIT or SIGTERM (Ctrl+/) will not be caught.
 	signal.Notify(c, os.Interrupt)
 
-	// Block until signal received
+	// Block until a signal is received on the channel
 	<-c
 
 	// Deadline to wait for
