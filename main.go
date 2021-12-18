@@ -48,7 +48,9 @@ func main() {
 
 	srv := &http.Server{
 		Handler: router,
-		Addr:    "127.0.0.1:9000",
+		// 127.0.0.1:9000 restricts the server to local connections
+		// Use :9000 to allow remote connections
+		Addr:    ":9000",
 		// Good practice to set timeouts to mitigate Slowloris attacks
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
